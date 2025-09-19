@@ -130,15 +130,15 @@ async def handle_list_resources() -> list[types.Resource]:
     """Provide the expert system as a resource."""
     return [
         types.Resource(
-            uri="prompt://system/expert",
-            name="Expert System Prompt",
-            description="Automatically applied expert-level system prompt for all interactions",
+            uri="system://expert-context",
+            name="🚀 Auto-Optimized Expert System",
+            description="AUTOMATIC: World-class expert system applied to all responses - no manual action required",
             mimeType="text/plain"
         ),
         types.Resource(
-            uri="prompt://optimization/guide", 
-            name="Prompt Optimization Guide",
-            description="How the automatic optimization works",
+            uri="context://optimization-active",
+            name="✨ Optimization Status: ACTIVE",
+            description="All prompts are being automatically enhanced with expert techniques",
             mimeType="text/plain"
         )
     ]
@@ -146,28 +146,50 @@ async def handle_list_resources() -> list[types.Resource]:
 @app.read_resource()
 async def handle_read_resource(uri: str) -> str:
     """Provide resources including the expert system prompt."""
-    if uri == "prompt://system/expert":
+    if uri == "system://expert-context":
         return create_expert_system_prompt()
-    elif uri == "prompt://optimization/guide":
-        return """# Automatic Prompt Optimization
+    elif uri == "context://optimization-active":
+        return """🚀 **AI VALIDATION: AUTOMATIC OPTIMIZATION ACTIVE** 🚀
 
-This MCP server automatically enhances all prompts with:
+✨ **STATUS**: All prompts are being automatically enhanced with expert-level techniques
 
-1. **Expert System Identity**: Applies world-class expertise context
-2. **Domain Detection**: Automatically detects technical, creative, or analytical needs
-3. **Clarity Enhancement**: Adds specificity and detail requests
-4. **Structure Optimization**: Organizes complex responses
-5. **Example Integration**: Includes concrete examples when beneficial
-6. **Reasoning Requirements**: Asks for methodology explanation
+🔧 **ACTIVE OPTIMIZATIONS**:
+• Expert system identity automatically applied
+• Domain expertise detection (technical/creative/analytical)
+• Clarity and detail enhancement
+• Structured response formatting
+• Practical examples and best practices
+• Step-by-step reasoning for complex topics
 
-The system prompt is automatically applied to provide expert-level responses without manual intervention.
+💡 **HOW TO USE**: 
+Just ask any question normally - optimization happens automatically behind the scenes!
+
+📊 **EXAMPLE**: 
+Your question: "How do I write better Python code?"
+Enhanced with: Technical expertise, best practices, examples, step-by-step guidance
+
+🎯 **RESULT**: More comprehensive, expert-level responses without any extra work!
 """
     return f"Resource not found: {uri}"
 
 @app.list_tools()
 async def handle_list_tools() -> list[types.Tool]:
-    """Provide tools for manual optimization when needed."""
+    """Provide tools for optimization."""
     return [
+        types.Tool(
+            name="auto_optimize",
+            description="🚀 AUTOMATIC OPTIMIZATION: Enhance any prompt with world-class expert techniques instantly!",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "prompt": {
+                        "type": "string",
+                        "description": "Your original prompt to automatically optimize with expert techniques"
+                    }
+                },
+                "required": ["prompt"]
+            }
+        ),
         types.Tool(
             name="optimize_prompt",
             description="Manually optimize a specific prompt with expert techniques",
@@ -200,11 +222,34 @@ async def handle_list_tools() -> list[types.Tool]:
 
 @app.call_tool()
 async def handle_call_tool(name: str, arguments: dict | None) -> list[types.TextContent]:
-    """Handle tool calls for manual optimization."""
+    """Handle tool calls for optimization."""
     if arguments is None:
         arguments = {}
     
-    if name == "optimize_prompt":
+    if name == "auto_optimize":
+        prompt = arguments.get("prompt", "")
+        if not prompt:
+            return [types.TextContent(type="text", text="Error: No prompt provided")]
+        
+        # Log the optimization
+        logger.info(f"🚀 AUTO-OPTIMIZING: {prompt[:50]}...")
+        
+        # Apply full optimization with visual indicators
+        expert_system = create_expert_system_prompt()
+        optimized = optimize_user_prompt(prompt)
+        
+        logger.info("✨ AUTO-OPTIMIZATION COMPLETE")
+        
+        # Return the full optimized response with clear indicators
+        response = f"""{expert_system}
+
+{optimized}
+
+🎯 **OPTIMIZATION COMPLETE**: Your prompt has been enhanced with expert techniques and is ready for the LLM!
+"""
+        return [types.TextContent(type="text", text=response)]
+    
+    elif name == "optimize_prompt":
         prompt = arguments.get("prompt", "")
         if not prompt:
             return [types.TextContent(type="text", text="Error: No prompt provided")]
