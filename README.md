@@ -18,7 +18,7 @@ A **fully automatic prompt optimization** Model Context Protocol (MCP) server th
 
 ### **Your Original Prompt:**
 ```
-How do I write better Python code?
+Use the auto_optimize tool with prompt: "How do I write better Python code?"
 ```
 
 ### **What You'll See (Automatically Enhanced):**
