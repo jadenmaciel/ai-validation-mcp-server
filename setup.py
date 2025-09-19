@@ -19,7 +19,7 @@ setup(
     description="A world-class prompt engineering MCP server for automatic prompt optimization",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/YOUR_USERNAME/ai-validation-mcp-server",
+    url="https://github.com/jadenmaciel/ai-validation-mcp-server",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -44,8 +44,8 @@ setup(
     },
     keywords="mcp model-context-protocol prompt-engineering ai llm cursor-ide",
     project_urls={
-        "Bug Reports": "https://github.com/YOUR_USERNAME/ai-validation-mcp-server/issues",
-        "Source": "https://github.com/YOUR_USERNAME/ai-validation-mcp-server",
-        "Documentation": "https://github.com/YOUR_USERNAME/ai-validation-mcp-server/blob/main/README.md",
+        "Bug Reports": "https://github.com/jadenmaciel/ai-validation-mcp-server/issues",
+        "Source": "https://github.com/jadenmaciel/ai-validation-mcp-server",
+        "Documentation": "https://github.com/jadenmaciel/ai-validation-mcp-server/blob/main/README.md",
     },
 )

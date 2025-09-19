@@ -71,7 +71,7 @@ A **world-class prompt engineering** Model Context Protocol (MCP) server that au
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/ai-validation-mcp-server.git
+   git clone https://github.com/jadenmaciel/ai-validation-mcp-server.git
    cd ai-validation-mcp-server
    ```
 
