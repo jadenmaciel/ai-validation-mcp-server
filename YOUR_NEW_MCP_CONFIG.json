@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "ai_validation_auto": {
+      "command": "python3",
+      "args": ["/home/jaden/ai-validation-server/run_mcp_auto.py"]
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "mcp-chromedevtools"]
+    },
+    "database-inspector": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/mcp-database-server"]
+    }
+  }
+}
